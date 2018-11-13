@@ -16,12 +16,19 @@ class AlbumList extends Component {
     .then(response => this.setState({ albums: response.data }));
   }
 
+  renderAlbums() {
+    return this.state.albums.map(album =>
+      // it should be id, not title
+      <Text key={album.title}>{album.title}</Text>
+    );
+  }
+
   render() {
     console.log(this.state)
 
     return (
       <View>
-        <Text>Album List!</Text>
+        {this.renderAlbums()}
       </View>
     );
   }
